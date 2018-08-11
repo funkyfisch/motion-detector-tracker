@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/local/include -isystem /usr/local/include/opencv 
+CXX_INCLUDES = -isystem /usr/local/include -isystem /usr/local/include/opencv -I/home/ioannisgkikas/Desktop/motion-detector-tracker/include 
 

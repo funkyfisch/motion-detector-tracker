@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ioannisgkikas/Desktop/motion-detector-tracker/main.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/main.cpp.o"
+  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o"
+  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/main.cpp.o"
+  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/motion_detect.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -12,6 +14,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "/usr/local/include/opencv"
+  "include"
   )
 
 # Targets to which this target links.

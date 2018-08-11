@@ -6,15 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/ioannisgkikas/Desktop/motion-detector-tracker/main.cpp
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp
+
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp
 opencv2/imgproc.hpp
-/home/ioannisgkikas/Desktop/motion-detector-tracker/opencv2/imgproc.hpp
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/opencv2/imgproc.hpp
 opencv2/highgui.hpp
-/home/ioannisgkikas/Desktop/motion-detector-tracker/opencv2/highgui.hpp
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/opencv2/highgui.hpp
 time.h
 -
 chrono
 -
+iostream
+-
+motion_detect.h
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.h
+
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp
+opencv2/imgproc.hpp
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/opencv2/imgproc.hpp
+motion_detect.h
+/home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.h
 iostream
 -
 
@@ -1329,4 +1341,8 @@ opencv2/videostab/log.hpp
 /usr/local/include/opencv2/xfeatures2d/cuda.hpp
 opencv2/core/cuda.hpp
 /usr/local/include/opencv2/xfeatures2d/opencv2/core/cuda.hpp
+
+include/motion_detect.h
+opencv2/imgproc.hpp
+include/opencv2/imgproc.hpp
 

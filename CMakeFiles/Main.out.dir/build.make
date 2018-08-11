@@ -57,38 +57,90 @@ include CMakeFiles/Main.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Main.out.dir/flags.make
 
-CMakeFiles/Main.out.dir/main.cpp.o: CMakeFiles/Main.out.dir/flags.make
-CMakeFiles/Main.out.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Main.out.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Main.out.dir/main.cpp.o -c /home/ioannisgkikas/Desktop/motion-detector-tracker/main.cpp
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.o: CMakeFiles/Main.out.dir/flags.make
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.o: src/motion_detect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Main.out.dir/src/motion_detect.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Main.out.dir/src/motion_detect.cpp.o -c /home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp
 
-CMakeFiles/Main.out.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Main.out.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ioannisgkikas/Desktop/motion-detector-tracker/main.cpp > CMakeFiles/Main.out.dir/main.cpp.i
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Main.out.dir/src/motion_detect.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp > CMakeFiles/Main.out.dir/src/motion_detect.cpp.i
 
-CMakeFiles/Main.out.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Main.out.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ioannisgkikas/Desktop/motion-detector-tracker/main.cpp -o CMakeFiles/Main.out.dir/main.cpp.s
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Main.out.dir/src/motion_detect.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp -o CMakeFiles/Main.out.dir/src/motion_detect.cpp.s
 
-CMakeFiles/Main.out.dir/main.cpp.o.requires:
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.requires:
 
-.PHONY : CMakeFiles/Main.out.dir/main.cpp.o.requires
+.PHONY : CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.requires
 
-CMakeFiles/Main.out.dir/main.cpp.o.provides: CMakeFiles/Main.out.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/Main.out.dir/main.cpp.o.provides
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.provides: CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.provides.build
+.PHONY : CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.provides
 
-CMakeFiles/Main.out.dir/main.cpp.o.provides.build: CMakeFiles/Main.out.dir/main.cpp.o
+CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.provides.build: CMakeFiles/Main.out.dir/src/motion_detect.cpp.o
+
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o: CMakeFiles/Main.out.dir/flags.make
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o: src/MotionDetection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o -c /home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Main.out.dir/src/MotionDetection.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp > CMakeFiles/Main.out.dir/src/MotionDetection.cpp.i
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Main.out.dir/src/MotionDetection.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp -o CMakeFiles/Main.out.dir/src/MotionDetection.cpp.s
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.requires:
+
+.PHONY : CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.requires
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.provides: CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.provides.build
+.PHONY : CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.provides
+
+CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.provides.build: CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o
+
+
+CMakeFiles/Main.out.dir/src/main.cpp.o: CMakeFiles/Main.out.dir/flags.make
+CMakeFiles/Main.out.dir/src/main.cpp.o: src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Main.out.dir/src/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Main.out.dir/src/main.cpp.o -c /home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp
+
+CMakeFiles/Main.out.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Main.out.dir/src/main.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp > CMakeFiles/Main.out.dir/src/main.cpp.i
+
+CMakeFiles/Main.out.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Main.out.dir/src/main.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp -o CMakeFiles/Main.out.dir/src/main.cpp.s
+
+CMakeFiles/Main.out.dir/src/main.cpp.o.requires:
+
+.PHONY : CMakeFiles/Main.out.dir/src/main.cpp.o.requires
+
+CMakeFiles/Main.out.dir/src/main.cpp.o.provides: CMakeFiles/Main.out.dir/src/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/main.cpp.o.provides.build
+.PHONY : CMakeFiles/Main.out.dir/src/main.cpp.o.provides
+
+CMakeFiles/Main.out.dir/src/main.cpp.o.provides.build: CMakeFiles/Main.out.dir/src/main.cpp.o
 
 
 # Object files for target Main.out
 Main_out_OBJECTS = \
-"CMakeFiles/Main.out.dir/main.cpp.o"
+"CMakeFiles/Main.out.dir/src/motion_detect.cpp.o" \
+"CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o" \
+"CMakeFiles/Main.out.dir/src/main.cpp.o"
 
 # External object files for target Main.out
 Main_out_EXTERNAL_OBJECTS =
 
-Main.out: CMakeFiles/Main.out.dir/main.cpp.o
+Main.out: CMakeFiles/Main.out.dir/src/motion_detect.cpp.o
+Main.out: CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o
+Main.out: CMakeFiles/Main.out.dir/src/main.cpp.o
 Main.out: CMakeFiles/Main.out.dir/build.make
 Main.out: /usr/local/lib/libopencv_ml.so.3.4.1
 Main.out: /usr/local/lib/libopencv_stitching.so.3.4.1
@@ -108,7 +160,7 @@ Main.out: /usr/local/lib/libopencv_video.so.3.4.1
 Main.out: /usr/local/lib/libopencv_imgproc.so.3.4.1
 Main.out: /usr/local/lib/libopencv_core.so.3.4.1
 Main.out: CMakeFiles/Main.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Main.out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Main.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Main.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -116,7 +168,9 @@ CMakeFiles/Main.out.dir/build: Main.out
 
 .PHONY : CMakeFiles/Main.out.dir/build
 
-CMakeFiles/Main.out.dir/requires: CMakeFiles/Main.out.dir/main.cpp.o.requires
+CMakeFiles/Main.out.dir/requires: CMakeFiles/Main.out.dir/src/motion_detect.cpp.o.requires
+CMakeFiles/Main.out.dir/requires: CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o.requires
+CMakeFiles/Main.out.dir/requires: CMakeFiles/Main.out.dir/src/main.cpp.o.requires
 
 .PHONY : CMakeFiles/Main.out.dir/requires
 

@@ -123,32 +123,86 @@ Main.out/fast:
 	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/build
 .PHONY : Main.out/fast
 
-main.o: main.cpp.o
+src/MotionDetection.o: src/MotionDetection.cpp.o
 
-.PHONY : main.o
+.PHONY : src/MotionDetection.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/MotionDetection.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o
+.PHONY : src/MotionDetection.cpp.o
 
-main.i: main.cpp.i
+src/MotionDetection.i: src/MotionDetection.cpp.i
 
-.PHONY : main.i
+.PHONY : src/MotionDetection.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/MotionDetection.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.i
+.PHONY : src/MotionDetection.cpp.i
 
-main.s: main.cpp.s
+src/MotionDetection.s: src/MotionDetection.cpp.s
 
-.PHONY : main.s
+.PHONY : src/MotionDetection.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/MotionDetection.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.s
+.PHONY : src/MotionDetection.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/motion_detect.o: src/motion_detect.cpp.o
+
+.PHONY : src/motion_detect.o
+
+# target to build an object file
+src/motion_detect.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/motion_detect.cpp.o
+.PHONY : src/motion_detect.cpp.o
+
+src/motion_detect.i: src/motion_detect.cpp.i
+
+.PHONY : src/motion_detect.i
+
+# target to preprocess a source file
+src/motion_detect.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/motion_detect.cpp.i
+.PHONY : src/motion_detect.cpp.i
+
+src/motion_detect.s: src/motion_detect.cpp.s
+
+.PHONY : src/motion_detect.s
+
+# target to generate assembly for a file
+src/motion_detect.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/motion_detect.cpp.s
+.PHONY : src/motion_detect.cpp.s
 
 # Help Target
 help:
@@ -159,9 +213,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Main.out"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/MotionDetection.o"
+	@echo "... src/MotionDetection.i"
+	@echo "... src/MotionDetection.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/motion_detect.o"
+	@echo "... src/motion_detect.i"
+	@echo "... src/motion_detect.s"
 .PHONY : help
 
 
