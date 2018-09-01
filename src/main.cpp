@@ -42,17 +42,17 @@ int main(int, char**) {
   VideoWriter video("out.avi", CV_FOURCC('M', 'J', 'P', 'G'), 20, Size(oldFrame.cols, oldFrame.rows), true);
   bool motionDetected;
   //cvtColor(oldFrame, oldFrame, COLOR_BGR2GRAY);
-  createTrackbar("brightness", "display", &brightness, brightness_slider_max );
-  createTrackbar("contrast", "display", &contrast, contrast_slider_max );
-  createTrackbar("gain", "display", &gain, gain_slider_max );
-  createTrackbar("exposure", "display", &exposure, exposure_slider_max );
+  // createTrackbar("brightness", "display", &brightness, brightness_slider_max );
+  // createTrackbar("contrast", "display", &contrast, contrast_slider_max );
+  // createTrackbar("gain", "display", &gain, gain_slider_max );
+  // createTrackbar("exposure", "display", &exposure, exposure_slider_max );
   //vector<cv::Mat> newRgbChannels;
   //vector<cv::Mat> oldRgbChannels;
   for(;;) {
-    vid.set(10, ((float) brightness) /1000);
-    vid.set(11, ((float) contrast)/1000);
-    vid.set(14, ((float) gain)/1000);
-    vid.set(15, (((float) exposure)/1000)*(-1));
+    // vid.set(10, ((float) brightness) /1000);
+    // vid.set(11, ((float) contrast)/1000);
+    // vid.set(14, ((float) gain)/1000);
+    // vid.set(15, (((float) exposure)/1000)*(-1));
 
     vid >> newFrame; // get a new frame from camera
     Mat videoFrame = newFrame.clone();
@@ -67,19 +67,19 @@ int main(int, char**) {
       if (motionDetected) {
         start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
         stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-        recording = true;
+        // recording = true;
       }
       imshow("display", displayFrame);
-      cout << "NOT_RECORDING" <<endl;
+      // cout << "NOT_RECORDING" <<endl;
     } else {
-      stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-      if (stop - start > 4*1000) {
-        recording = false;
-        start = stop;
-      }
-      video.write(videoFrame);
-      cout << "RECORDING" <<endl;
-      imshow("display", newFrame);
+      // stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+      // if (stop - start > 4*1000) {
+      //   recording = false;
+      //   start = stop;
+      // }
+      // video.write(videoFrame);
+      // cout << "RECORDING" <<endl;
+      // imshow("display", newFrame);
     }
 
 
