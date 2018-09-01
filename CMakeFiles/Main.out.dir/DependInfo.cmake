@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/MotionDetection.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o"
+  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/camera.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/camera.cpp.o"
+  "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/gui.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/gui.cpp.o"
   "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/main.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/main.cpp.o"
   "/home/ioannisgkikas/Desktop/motion-detector-tracker/src/motion_detect.cpp" "/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir/src/motion_detect.cpp.o"
   )

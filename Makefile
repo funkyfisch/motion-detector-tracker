@@ -123,32 +123,59 @@ Main.out/fast:
 	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/build
 .PHONY : Main.out/fast
 
-src/MotionDetection.o: src/MotionDetection.cpp.o
+src/camera.o: src/camera.cpp.o
 
-.PHONY : src/MotionDetection.o
+.PHONY : src/camera.o
 
 # target to build an object file
-src/MotionDetection.cpp.o:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o
-.PHONY : src/MotionDetection.cpp.o
+src/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/camera.cpp.o
+.PHONY : src/camera.cpp.o
 
-src/MotionDetection.i: src/MotionDetection.cpp.i
+src/camera.i: src/camera.cpp.i
 
-.PHONY : src/MotionDetection.i
+.PHONY : src/camera.i
 
 # target to preprocess a source file
-src/MotionDetection.cpp.i:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.i
-.PHONY : src/MotionDetection.cpp.i
+src/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/camera.cpp.i
+.PHONY : src/camera.cpp.i
 
-src/MotionDetection.s: src/MotionDetection.cpp.s
+src/camera.s: src/camera.cpp.s
 
-.PHONY : src/MotionDetection.s
+.PHONY : src/camera.s
 
 # target to generate assembly for a file
-src/MotionDetection.cpp.s:
-	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/MotionDetection.cpp.s
-.PHONY : src/MotionDetection.cpp.s
+src/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/camera.cpp.s
+.PHONY : src/camera.cpp.s
+
+src/gui.o: src/gui.cpp.o
+
+.PHONY : src/gui.o
+
+# target to build an object file
+src/gui.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/gui.cpp.o
+.PHONY : src/gui.cpp.o
+
+src/gui.i: src/gui.cpp.i
+
+.PHONY : src/gui.i
+
+# target to preprocess a source file
+src/gui.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/gui.cpp.i
+.PHONY : src/gui.cpp.i
+
+src/gui.s: src/gui.cpp.s
+
+.PHONY : src/gui.s
+
+# target to generate assembly for a file
+src/gui.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.out.dir/build.make CMakeFiles/Main.out.dir/src/gui.cpp.s
+.PHONY : src/gui.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -213,9 +240,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Main.out"
-	@echo "... src/MotionDetection.o"
-	@echo "... src/MotionDetection.i"
-	@echo "... src/MotionDetection.s"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
+	@echo "... src/gui.o"
+	@echo "... src/gui.i"
+	@echo "... src/gui.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
