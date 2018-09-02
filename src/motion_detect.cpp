@@ -1,7 +1,15 @@
 #include "opencv2/imgproc.hpp"
 #include "motion_detect.h"
 #include <iostream>
+
 float differenceThreshold = 30;
+
+int determineMotionRegion(float avgX, float avgY, int width, int height) {
+  if (avgX > width/2 && avgY < height/2) return 1;
+  if (avgX > width/2 && avgY > height/2) return 2;
+  if (avgX < width/2 && avgY > height/2) return 3;
+  if (avgX < width/2 && avgY < height/2) return 4;
+}
 
 Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDetected) {
 
@@ -28,13 +36,11 @@ Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDet
   }
 
   if(count > 100) {
+    int region;
     int quarter;
     avgX /= count;
     avgY /= count;
-    if (avgX > width/2 && avgY < height/2) quarter = 1;
-    if (avgX > width/2 && avgY > height/2) quarter = 2;
-    if (avgX < width/2 && avgY > height/2) quarter = 3;
-    if (avgX < width/2 && avgY < height/2) quarter = 4;
+    region = determineMotionRegion(avgX, avgY, width, height);
     cout << "Motion Detected at quarter " << quarter << endl;
     pointCameraTowards(quarter);
     *motionDetected = true;

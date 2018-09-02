@@ -6,4 +6,4 @@ class Camera {
   public:
     VideoCapture vid();
     int outputWidth, outputHeight;
-}
+};
