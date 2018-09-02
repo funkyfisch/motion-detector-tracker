@@ -1,5 +1,5 @@
-#include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
+
 #include <time.h>
 #include <chrono>
 #include <iostream>
@@ -10,16 +10,8 @@ using namespace cv;
 using namespace std::chrono;
 
 const int fps = 30;
-const int brightness_slider_max = 2*1000;
-const int contrast_slider_max = 2*1000;
-const int gain_slider_max = 2*1000;
-const int exposure_slider_max = 8*1000;
 
 int main(int, char**) {
-  int brightness = 340;
-  int contrast = 0;
-  int gain = 0;
-  int exposure = 5000;
   bool recording = false;
 
   int start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
@@ -28,11 +20,9 @@ int main(int, char**) {
   VideoCapture vid(0); // open the default camera
   int outputWidth = vid.get(CV_CAP_PROP_FRAME_WIDTH);
   int outputHeight = vid.get(CV_CAP_PROP_FRAME_HEIGHT);
-  vid.set(CAP_PROP_AUTO_EXPOSURE, 0.25);
   if(!vid.isOpened()) {
     return -1;
   }
-
 
   Mat edges;
   //namedWindow("display",1);
@@ -58,8 +48,6 @@ int main(int, char**) {
     Mat videoFrame = newFrame.clone();
     cvtColor(newFrame, newFrame, COLOR_BGR2GRAY);
     Mat displayFrame = newFrame.clone();
-    //newRgbChannels = split(newFrame);
-    //oldRgbChannels = split(oldFrame);
 
     if (!recording) {
       // bool motionDetected = motionDetect(oldRgbChannels, newRgbChannels);
@@ -81,13 +69,6 @@ int main(int, char**) {
       // cout << "RECORDING" <<endl;
       // imshow("display", newFrame);
     }
-
-
-
-    //cvtColor(frame, edges, COLOR_BGR2GRAY);
-
-    //Canny(edges, edges, 0, 30, 3);
-    //imshow("display", edges);
     oldFrame = newFrame.clone();
 
     if(waitKey(1000 / 30) >= 0) {

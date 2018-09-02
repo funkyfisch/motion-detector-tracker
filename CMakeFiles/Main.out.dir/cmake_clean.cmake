@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Main.out.dir/src/motion_detect.cpp.o"
-  "CMakeFiles/Main.out.dir/src/MotionDetection.cpp.o"
+  "CMakeFiles/Main.out.dir/src/gui.cpp.o"
+  "CMakeFiles/Main.out.dir/src/camera.cpp.o"
   "CMakeFiles/Main.out.dir/src/main.cpp.o"
   "Main.out.pdb"
   "Main.out"
