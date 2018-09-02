@@ -37,12 +37,11 @@ Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDet
 
   if(count > 100) {
     int region;
-    int quarter;
     avgX /= count;
     avgY /= count;
     region = determineMotionRegion(avgX, avgY, width, height);
-    cout << "Motion Detected at quarter " << quarter << endl;
-    pointCameraTowards(quarter);
+    cout << "Motion Detected at region " << region << endl;
+    pointCameraTowards(region);
     *motionDetected = true;
     circle(displayFrame, Point(avgX, avgY), 30, Scalar(100, 0, 200), 20, 8, 0);
   } else {

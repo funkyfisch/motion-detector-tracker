@@ -38,6 +38,7 @@ int main(int, char**) {
   // createTrackbar("exposure", "display", &exposure, exposure_slider_max );
   //vector<cv::Mat> newRgbChannels;
   //vector<cv::Mat> oldRgbChannels;
+  int debounceCounter = 0;
   for(;;) {
     // vid.set(10, ((float) brightness) /1000);
     // vid.set(11, ((float) contrast)/1000);
@@ -48,26 +49,29 @@ int main(int, char**) {
     Mat videoFrame = newFrame.clone();
     cvtColor(newFrame, newFrame, COLOR_BGR2GRAY);
     Mat displayFrame = newFrame.clone();
-
-    if (!recording) {
-      // bool motionDetected = motionDetect(oldRgbChannels, newRgbChannels);
-      displayFrame = motionDetectBW(oldFrame, newFrame, displayFrame, &motionDetected);
-      if (motionDetected) {
-        start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-        stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-        // recording = true;
-      }
-      //imshow("display", displayFrame);
-      // cout << "NOT_RECORDING" <<endl;
+    if (debounceCounter < 10) {
+      debounceCounter++;
     } else {
-      // stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-      // if (stop - start > 4*1000) {
-      //   recording = false;
-      //   start = stop;
-      // }
-      // video.write(videoFrame);
-      // cout << "RECORDING" <<endl;
-      // imshow("display", newFrame);
+      if (!recording) {
+        // bool motionDetected = motionDetect(oldRgbChannels, newRgbChannels);
+        displayFrame = motionDetectBW(oldFrame, newFrame, displayFrame, &motionDetected);
+        if (motionDetected) {
+          start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+          stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+          recording = true;
+        }
+        //imshow("display", displayFrame);
+        cout << "NOT_RECORDING" <<endl;
+      } else {
+        stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+        if (stop - start > 4*1000) {
+          recording = false;
+          start = stop;
+        }
+        video.write(videoFrame);
+        cout << "RECORDING" <<endl;
+        // imshow("display", newFrame);
+      }
     }
     oldFrame = newFrame.clone();
 
