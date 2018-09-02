@@ -35,7 +35,7 @@ int main(int, char**) {
 
 
   Mat edges;
-  namedWindow("display",1);
+  //namedWindow("display",1);
   Mat newFrame;
   Mat oldFrame;
   vid >> oldFrame;
@@ -69,7 +69,7 @@ int main(int, char**) {
         stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
         // recording = true;
       }
-      imshow("display", displayFrame);
+      //imshow("display", displayFrame);
       // cout << "NOT_RECORDING" <<endl;
     } else {
       // stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
