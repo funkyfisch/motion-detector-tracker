@@ -1,3 +1,0 @@
-/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/edit_cache.dir
-/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/rebuild_cache.dir
-/home/ioannisgkikas/Desktop/motion-detector-tracker/CMakeFiles/Main.out.dir
