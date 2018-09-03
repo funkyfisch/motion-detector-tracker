@@ -1,16 +1,29 @@
-#include <iostream>
-#include <fcntl.h>
-#include <termios.h>
-#include <unistd.h>
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-
-#define USB_DEVICE_IDENTIFIER "/dev/ttyUSB0"
-#define EXIT_FAILURE -1
-#define EXIT_SUCCESS 0
+#include "../include/serial.h"
 
 using namespace std;
+
+int main(int argc, char** argv) {
+
+    char device[] = USB_DEVICE_IDENTIFIER;
+    int deviceOk = checkSerialDevice(device);
+    if (deviceOk != 0) {
+        return -1;
+    } else {
+        setupSerialSettings(device);
+        int trials;
+        for(trials = 1; trials < 4; trials++) {
+            string handshake = readSerial(device, 1);
+            if (handshake == "G") {
+                cout << "Handshake success!" << endl;
+                break;
+            } else {
+                cerr << "Attempt no " << trials << " failed, retrying" << endl;
+            }
+        }
+    }
+}
+
+
 
 int checkSerialDevice(char device[]) {
     int code;
@@ -42,7 +55,7 @@ void setupSerialSettings(char device[]) {
         /* Setting Time outs */                                       
     SerialPortSettings.c_cc[VMIN]  = 10; /* Read 10 characters */  
     SerialPortSettings.c_cc[VTIME] = 0;  /* Wait indefinitely   */
-
+    
     if((tcsetattr(fd,TCSANOW,&SerialPortSettings)) != 0) /* Set the attributes to the termios structure*/
 	    cerr << "ERROR ! in Setting attributes" << endl;
 	else
@@ -69,26 +82,3 @@ string readSerial(char device[], int length) {
     }
     return message;
 }
-
-int main(int argc, char** argv) {
-
-    char device[] = USB_DEVICE_IDENTIFIER;
-    int deviceOk = checkSerialDevice(device);
-    if (deviceOk != 0) {
-        return -1;
-    } else {
-        setupSerialSettings(device);
-        int trials;
-        for(trials = 1; trials < 4; trials++) {
-            string handshake = readSerial(device, 1);
-            if (handshake == "G") {
-                cout << "Handshake success!" << endl;
-                break;
-            } else {
-                cerr << "Attempt no " << trials << " failed, retrying" << endl;
-            }
-        }
-    }
-}
-
-

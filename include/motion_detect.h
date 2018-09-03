@@ -1,5 +1,5 @@
 #include "opencv2/imgproc.hpp"
-using namespace cv;
-using namespace std;
-cv::Mat motionDetectBW(Mat, Mat, Mat, bool*);
+
+cv::Mat motionDetectBW(cv::Mat, cv::Mat, cv::Mat, bool*);
 void pointCameraTowards(int);
+int determineMotionRegion(float, float, int, int);

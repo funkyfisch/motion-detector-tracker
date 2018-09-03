@@ -4,20 +4,34 @@
 #include <chrono>
 #include <iostream>
 #include "motion_detect.h"
+#include "gui.h"
 
 using namespace std;
 using namespace cv;
 using namespace std::chrono;
 
+bool guiEnabled = false;
+bool serialEnabled = false;
+bool recordingEnabled = false;
 const int fps = 30;
 
-int main(int, char**) {
-  bool recording = false;
+int main(int argc, char* argv[]) {
+  if (argc > 0) {
+    cout << argc << " Arguments included  " <<  argv[1] << endl;
+    for(int i = 0; i < argc; i++) {
+      string argument = string(argv[i]);
+      if (argument == "--enable-gui") guiEnabled = true;
+      if (argument == "--enable-serial") serialEnabled = true;
+      if (argument == "--enable-recording") recordingEnabled = true;
+    }
+  }
 
+  bool recording = false;
   int start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
   int stop = start;
 
   VideoCapture vid(0); // open the default camera
+  if (guiEnabled) setupGUI(vid);
   int outputWidth = vid.get(CV_CAP_PROP_FRAME_WIDTH);
   int outputHeight = vid.get(CV_CAP_PROP_FRAME_HEIGHT);
   if(!vid.isOpened()) {
@@ -25,31 +39,25 @@ int main(int, char**) {
   }
 
   Mat edges;
-  //namedWindow("display",1);
+  
   Mat newFrame;
   Mat oldFrame;
   vid >> oldFrame;
+
   VideoWriter video("out.avi", CV_FOURCC('M', 'J', 'P', 'G'), 20, Size(oldFrame.cols, oldFrame.rows), true);
+  int debounceCounter = 0;
+
   bool motionDetected;
   //cvtColor(oldFrame, oldFrame, COLOR_BGR2GRAY);
-  // createTrackbar("brightness", "display", &brightness, brightness_slider_max );
-  // createTrackbar("contrast", "display", &contrast, contrast_slider_max );
-  // createTrackbar("gain", "display", &gain, gain_slider_max );
-  // createTrackbar("exposure", "display", &exposure, exposure_slider_max );
   //vector<cv::Mat> newRgbChannels;
   //vector<cv::Mat> oldRgbChannels;
-  int debounceCounter = 0;
   for(;;) {
-    // vid.set(10, ((float) brightness) /1000);
-    // vid.set(11, ((float) contrast)/1000);
-    // vid.set(14, ((float) gain)/1000);
-    // vid.set(15, (((float) exposure)/1000)*(-1));
 
     vid >> newFrame; // get a new frame from camera
     Mat videoFrame = newFrame.clone();
     cvtColor(newFrame, newFrame, COLOR_BGR2GRAY);
     Mat displayFrame = newFrame.clone();
-    if (debounceCounter < 10) {
+    if (debounceCounter < 10 && recordingEnabled) {
       debounceCounter++;
     } else {
       if (!recording) {
@@ -58,9 +66,10 @@ int main(int, char**) {
         if (motionDetected) {
           start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
           stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-          recording = true;
+          //recording = true;
         }
-        //imshow("display", displayFrame);
+        
+        if (guiEnabled) showFrame(displayFrame);
         cout << "NOT_RECORDING" <<endl;
       } else {
         stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
@@ -68,9 +77,8 @@ int main(int, char**) {
           recording = false;
           start = stop;
         }
-        video.write(videoFrame);
-        cout << "RECORDING" <<endl;
-        // imshow("display", newFrame);
+        //video.write(videoFrame);
+        //cout << "RECORDING" <<endl;
       }
     }
     oldFrame = newFrame.clone();

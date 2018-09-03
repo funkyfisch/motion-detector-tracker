@@ -1,9 +1,7 @@
 #include "opencv2/highgui.hpp"
 
-using namespace cv;
-
 class Camera {
   public:
-    VideoCapture vid();
+    cv::VideoCapture vid;
     int outputWidth, outputHeight;
 };
