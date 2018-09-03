@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int mainn(int argc, char** argv) {
 
     char device[] = USB_DEVICE_IDENTIFIER;
     int deviceOk = checkSerialDevice(device);

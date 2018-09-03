@@ -28,7 +28,7 @@ int determineMotionRegion(float avgX, float avgY, int width, int height) {
   }
 }
 
-Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDetected) {
+Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDetected, int *region) {
 
   int count = 0;
   float avgX = 0;
@@ -59,12 +59,10 @@ Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDet
   }
 
   if(count > 100) {
-    int region;
     avgX /= count;
     avgY /= count;
-    region = determineMotionRegion(avgX, avgY, width, height);
-    cout << "Motion Detected at region " << region << endl;
-    pointCameraTowards(region);
+    *region = determineMotionRegion(avgX, avgY, width, height);
+    cout << "Motion Detected at region " << *region << endl;
     *motionDetected = true;
     circle(displayFrame, Point(avgX, avgY), 30, Scalar(100, 0, 200), 20, 8, 0);
   } else {
@@ -73,65 +71,3 @@ Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDet
   return displayFrame;
 }
 
-void pointCameraTowards(int region) {
-  switch(region) {
-    case 1:
-    //panleft(),pitchup();
-      break;
-    case 2:
-    //pitchup();
-      break;
-    case 3:
-    //panright(), pitchup();
-      break;
-    case 4:
-    //panleft();
-      break;
-    case 5:
-      break;
-    case 6:
-    //panright();
-      break;
-    case 7:
-    //panleft(), pitchdown();
-      break;
-    case 8:
-    //pitchdown();
-      break;
-    case 9:
-    //panright(), pitchdown();
-      break;
-    default:
-      break;
-    return;
-  }
-}
-
-//bool motionDetect(vector<Mat> oldRgb, vector<Mat> newRgb) {
-//  int count = 0;
-//  for(int i = 0; i < oldRgb.rows; i++) {
-//    for(int j = 0; j < oldRgb.cols; j++) {
-//      float oldRed = (float) oldRgb[0].at<uchar>(i,j);
-//      float oldGreen = (float) oldRgb[1].at<uchar>(i,j);
-//      float oldBlue = (float) oldRgb[2].at<uchar>(i,j);
-//      float newRed = (float) newRgb[0].at<uchar>(i,j);
-//      float newGreen = (float) newRgb[1].at<uchar>(i,j);
-//      float newBlue = (float) newRgb[2].at<uchar>(i,j);
-//
-//      float d = distSq(oldRed, oldGreen, oldBlue, newRed, newGreen, newBlue);
-//
-//      if (d > differenceThreshold*differenceThreshold) {
-//        count++;
-//      }
-//    }
-//  }
-//  if(count > 100) {
-//    return true;
-//  }
-//  return false;
-//}
-
-//float distSq(float x1, float y1, float z1, float x2, float y2, float z2) {
-//  return (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) + (z2-z1)*(z2-z1);
-
-//}

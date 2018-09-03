@@ -4,6 +4,7 @@
 #include <chrono>
 #include <iostream>
 #include "motion_detect.h"
+#include "motion_track.h"
 #include "gui.h"
 
 using namespace std;
@@ -15,8 +16,11 @@ bool serialEnabled = false;
 bool recordingEnabled = false;
 const int fps = 30;
 
+void loopWithoutRecordingEnabled();
+void loopWithRecordingEnabled();
+
 int main(int argc, char* argv[]) {
-  if (argc > 0) {
+  if (argc > 1) {
     cout << argc << " Arguments included  " <<  argv[1] << endl;
     for(int i = 0; i < argc; i++) {
       string argument = string(argv[i]);
@@ -25,48 +29,52 @@ int main(int argc, char* argv[]) {
       if (argument == "--enable-recording") recordingEnabled = true;
     }
   }
+  
+  if (recordingEnabled) {
+    loopWithRecordingEnabled();
+  }
+  else {
+    loopWithoutRecordingEnabled();
+  }
 
-  bool recording = false;
-  int start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-  int stop = start;
+  return 0;
+}
 
+void loopWithRecordingEnabled() {
   VideoCapture vid(0); // open the default camera
   if (guiEnabled) setupGUI(vid);
   int outputWidth = vid.get(CV_CAP_PROP_FRAME_WIDTH);
   int outputHeight = vid.get(CV_CAP_PROP_FRAME_HEIGHT);
   if(!vid.isOpened()) {
-    return -1;
+    return;
   }
-
-  Mat edges;
-  
+  bool motionDetected;
+  int region;
   Mat newFrame;
   Mat oldFrame;
   vid >> oldFrame;
 
   VideoWriter video("out.avi", CV_FOURCC('M', 'J', 'P', 'G'), 20, Size(oldFrame.cols, oldFrame.rows), true);
+  bool recording = false;
+  int start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+  int stop = start;
   int debounceCounter = 0;
 
-  bool motionDetected;
-  //cvtColor(oldFrame, oldFrame, COLOR_BGR2GRAY);
-  //vector<cv::Mat> newRgbChannels;
-  //vector<cv::Mat> oldRgbChannels;
-  for(;;) {
 
+  for (;;) {
     vid >> newFrame; // get a new frame from camera
     Mat videoFrame = newFrame.clone();
     cvtColor(newFrame, newFrame, COLOR_BGR2GRAY);
     Mat displayFrame = newFrame.clone();
-    if (debounceCounter < 10 && recordingEnabled) {
-      debounceCounter++;
-    } else {
+    if (debounceCounter < 10) debounceCounter++;
+    else {
+      displayFrame = motionDetectBW(oldFrame, newFrame, displayFrame, &motionDetected, &region);
       if (!recording) {
-        // bool motionDetected = motionDetect(oldRgbChannels, newRgbChannels);
-        displayFrame = motionDetectBW(oldFrame, newFrame, displayFrame, &motionDetected);
         if (motionDetected) {
           start = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
           stop = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-          //recording = true;
+          recording = true;
+          pointCameraTowards(region);
         }
         
         if (guiEnabled) showFrame(displayFrame);
@@ -77,9 +85,46 @@ int main(int argc, char* argv[]) {
           recording = false;
           start = stop;
         }
-        //video.write(videoFrame);
-        //cout << "RECORDING" <<endl;
+        if (guiEnabled) showFrame(displayFrame);
+        video.write(videoFrame);
+        cout << "RECORDING" <<endl;
       }
+    }
+
+    oldFrame = newFrame.clone();
+
+    if(waitKey(1000 / 30) >= 0) {
+      break;
+    }
+  }
+}
+
+void loopWithoutRecordingEnabled() {
+  VideoCapture vid(0); // open the default camera
+  if (guiEnabled) {
+    setupGUI(vid);
+  }
+  int outputWidth = vid.get(CV_CAP_PROP_FRAME_WIDTH);
+  int outputHeight = vid.get(CV_CAP_PROP_FRAME_HEIGHT);
+  if(!vid.isOpened()) {
+    return;
+  }
+  bool motionDetected;
+  int region;
+  Mat newFrame;
+  Mat oldFrame;
+  vid >> oldFrame;
+  for(;;) {
+    vid >> newFrame; // get a new frame from camera
+    Mat videoFrame = newFrame.clone();
+    cvtColor(newFrame, newFrame, COLOR_BGR2GRAY);
+    Mat displayFrame = newFrame.clone();
+    displayFrame = motionDetectBW(oldFrame, newFrame, displayFrame, &motionDetected, &region);
+    if (motionDetected) {
+      pointCameraTowards(region);
+    }
+    if (guiEnabled) {
+      showFrame(displayFrame);
     }
     oldFrame = newFrame.clone();
 
@@ -87,6 +132,4 @@ int main(int argc, char* argv[]) {
       break;
     }
   }
-  // the camera will be deinitialized automatically in VideoCapture destructor
-  return 0;
 }
