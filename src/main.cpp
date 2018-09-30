@@ -18,15 +18,19 @@ const int fps = 30;
 
 void loopWithoutRecordingEnabled();
 void loopWithRecordingEnabled();
+void printHelpSection();
 
 int main(int argc, char* argv[]) {
   if (argc > 1) {
-    cout << argc << " Arguments included  " <<  argv[1] << endl;
     for(int i = 0; i < argc; i++) {
       string argument = string(argv[i]);
       if (argument == "--enable-gui") guiEnabled = true;
       if (argument == "--enable-serial") serialEnabled = true;
       if (argument == "--enable-recording") recordingEnabled = true;
+      if (argument == "--help" || argument == "-h") {
+        printHelpSection();
+        return 0;
+      }
     }
   }
   
@@ -132,4 +136,14 @@ void loopWithoutRecordingEnabled() {
       break;
     }
   }
+}
+
+void printHelpSection() {
+  cout << "Motion Detector and Tracker" << endl << endl;
+  cout << "Usage: ./Main.out [OPTIONS]" << endl << endl;
+  cout << "      --help                      Displays this page" << endl;
+  cout << "      --enable-gui                Runs non-headless mode with GUI" << endl;
+  cout << "      --enable-serial             Runs with serial motor controller" << endl;
+  cout << "      --enable-recording          Records video on motion detection" << endl;
+  cout << endl;
 }
