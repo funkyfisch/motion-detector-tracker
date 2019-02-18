@@ -15,6 +15,7 @@
 #define EXIT_SUCCESS 0
 #endif
 
+void initSerial(char[]);
 int checkSerialDevice(char[]);
 void setupSerialSettings(char[]);
 void writeSerial(char[], char[]);

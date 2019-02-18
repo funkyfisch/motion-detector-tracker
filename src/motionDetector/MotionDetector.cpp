@@ -1,5 +1,5 @@
 #include "opencv2/imgproc.hpp"
-#include "motion_detect.h"
+#include "include/MotionDetector.h"
 #include <iostream>
 
 using namespace std;

@@ -1,25 +1,23 @@
-#include "../include/serial.h"
+#include "serialInterface/serial.h"
 
 using namespace std;
 
-int mainn(int argc, char** argv) {
-
-    char device[] = USB_DEVICE_IDENTIFIER;
+void initSerial(char device[]) {
     int deviceOk = checkSerialDevice(device);
     if (deviceOk != 0) {
-        return -1;
+        return;
     } else {
         setupSerialSettings(device);
-        int trials;
-        for(trials = 1; trials < 4; trials++) {
-            string handshake = readSerial(device, 1);
-            if (handshake == "G") {
-                cout << "Handshake success!" << endl;
-                break;
-            } else {
-                cerr << "Attempt no " << trials << " failed, retrying" << endl;
-            }
-        }
+        // int trials;
+        // for(trials = 1; trials < 4; trials++) {
+        //     string handshake = readSerial(device, 1);
+        //     if (handshake == "G") {
+        //         cout << "Handshake success!" << endl;
+        //         break;
+        //     } else {
+        //         cerr << "Attempt no " << trials << " failed, retrying" << endl;
+        //     }
+        // }
     }
 }
 
@@ -46,7 +44,7 @@ void setupSerialSettings(char device[]) {
     int fd = open(device, O_RDWR | O_NOCTTY);
     tcgetattr(fd, &SerialPortSettings);
     cfsetispeed(&SerialPortSettings, B9600);
-    cfsetospeed(&SerialPortSettings, B9600);
+    cfsetospeed(&SerialPortSettings, B115200);
     SerialPortSettings.c_cflag &= ~PARENB;   // No Parity
     SerialPortSettings.c_cflag &= ~CSTOPB; //Stop bits = 1 
     SerialPortSettings.c_cflag &= ~CSIZE; /* Clears the Mask       */
