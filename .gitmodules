@@ -1,0 +1,3 @@
+[submodule "lib/EventBus"]
+	path = lib/EventBus
+	url = https://github.com/gelldur/EventBus.git
