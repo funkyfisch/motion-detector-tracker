@@ -2,6 +2,7 @@
 
 #include <gtkmm-3.0/gtkmm.h>
 #include <opencv4/opencv2/highgui.hpp>
+#include "Core.hpp"
 
 class CameraDrawingArea: public Gtk::DrawingArea {
     public:
@@ -20,4 +21,5 @@ class CameraDrawingArea: public Gtk::DrawingArea {
         cv::Mat webcam; 
         cv::Mat output; 
         int width, height;
+        Core coreInstance;
 };

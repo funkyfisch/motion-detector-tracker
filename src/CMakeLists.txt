@@ -32,6 +32,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize=undefined -fno-sanitize=vptr")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
+    -pthread \
     -std=c++17 \
     -Wcast-align \
     -pedantic \
@@ -51,16 +52,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -Wundef \
     -Wall \
     -Wextra \
-    -pthread \
     ")
     # -Werror \
 
     
 set(VERSION "1.0")
+find_package( Threads REQUIRED )
 find_package( OpenCV REQUIRED )
 
 enable_testing()
 add_subdirectory(core)
+add_subdirectory(motiondetect)
 add_subdirectory(camera)
 add_subdirectory(app)
 add_subdirectory(ui)

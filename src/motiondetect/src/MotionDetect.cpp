@@ -1,13 +1,24 @@
-#include "opencv2/imgproc.hpp"
+
 #include "MotionDetect.hpp"
-#include <iostream>
 
 using namespace std;
 using namespace cv;
 
 float differenceThreshold = 30;
 
-int determineMotionRegion(float avgX, float avgY, int width, int height) {
+MotionDetect::MotionDetect(const std::shared_ptr<Dexode::EventBus>& eb) :
+  _eventBus{eb}, _previousFrame{}, _nextFrame{}
+  {
+    _eventBus->listen<Event::NewFrame>(
+      std::bind(&MotionDetect::onReceiveFrame, this, std::placeholders::_1)
+    );
+  }
+
+void MotionDetect::run() {
+    // std::cout<<"Running motiondetect"<<std::endl;
+}
+
+int MotionDetect::determineMotionRegion(float avgX, float avgY, int width, int height) {
   // first row regions
   if (avgY < height/3) {  
     if (avgX < width/3) return 1;
@@ -28,8 +39,8 @@ int determineMotionRegion(float avgX, float avgY, int width, int height) {
   }
 }
 
-Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDetected, int *region) {
-
+bool MotionDetect::motionDetectBW(Mat oldFrame, Mat newFrame) {
+  cv::Mat displayFrame = oldFrame.clone();
   int count = 0;
   float avgX = 0;
   float avgY = 0;
@@ -61,13 +72,30 @@ Mat motionDetectBW(Mat oldFrame, Mat newFrame, Mat displayFrame, bool *motionDet
   if(count > 100) {
     avgX /= count;
     avgY /= count;
-    *region = determineMotionRegion(avgX, avgY, width, height);
-    cout << "Motion Detected at region " << *region << endl;
-    *motionDetected = true;
+    // *region = determineMotionRegion(avgX, avgY, width, height);
+    // cout << "Motion Detected at region " << *region << endl;
+    // *motionDetected = true;
+    return true;
     circle(displayFrame, Point(avgX, avgY), 30, Scalar(100, 0, 200), 20, 8, 0);
   } else {
-    *motionDetected = false;
+    // *motionDetected = false;
   }
-  return displayFrame;
+  return false;
+}
+
+void MotionDetect::onReceiveFrame(const Event::NewFrame& e) {
+    cv::Mat restored = e.frame.clone();
+    cv::cvtColor(restored, restored, COLOR_BGR2GRAY);
+    if (!_hasFirstFrame) {
+      _previousFrame = restored.clone();
+      _nextFrame = restored.clone();  
+      _hasFirstFrame = true;
+    } else {
+      _previousFrame = _nextFrame.clone();
+      _nextFrame = restored.clone();
+      int region = 0;
+      bool motionDetected = motionDetectBW(_previousFrame, _nextFrame);
+      std::cout<<motionDetected<<std::endl;
+    }
 }
 

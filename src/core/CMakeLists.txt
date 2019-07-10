@@ -10,6 +10,8 @@ target_include_directories(core
 
 target_link_libraries(core
     PUBLIC
+        ${CMAKE_THREAD_LIBS_INIT}
         Dexode::EventBus
         camera
+        motiondetect
 )
